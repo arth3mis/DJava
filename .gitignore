@@ -1,0 +1,6 @@
+# build directories
+/out/**
+/target/**
+
+# javaparser output dir
+/output/**
