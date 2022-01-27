@@ -16,6 +16,7 @@ import com.github.javaparser.utils.SourceRoot;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.regex.Pattern;
 
 /**
@@ -23,13 +24,34 @@ import java.util.regex.Pattern;
  */
 public class TestParser {
     public static void main(String[] args) {
+        /*
+
+        Getting started with javaparser:
+        https://tomassetti.me/getting-started-with-javaparser-analyzing-java-code-programmatically/#
+        Official website:
+        https://javaparser.org/
+
+         */
         Log.setAdapter(new Log.StandardOutStandardErrorAdapter());  // JavaParser has a minimal logging class that normally logs nothing. Let's ask it to write to standard out
         Log.info("------------------------------");
         CompilationUnit cu = null;
         try {
-            cu = StaticJavaParser.parse(CodeGenerationUtils.mavenModuleRoot(TestParser.class).resolve("src/main/resources").resolve("test_code2.java"));
+            // ways to get src/main/resources/file.ext:
+            // (relative to package) - getClass().getClassLoader().getResourceAsStream("file.ext");
+            // (as above; for static methods) - TheClass.class.getClassLoader().getResourceAsStream("file.ext");
+            // ("/" for starting at root resource folder) - getClass().getResourceAsStream("/file.ext");
+            InputStream is = TestParser.class.getClassLoader().getResourceAsStream("x.djava");
+
+
+            // hopes and dreams shattered
+            :(
+            // parser will keywords im original
+
+
+
+            cu = StaticJavaParser.parse(is);//CodeGenerationUtils.mavenModuleRoot(TestParser.class).resolve("src/main/resources").resolve("test_code2.java"));
                     //"D:\\Users\\Arthur\\Dokumente\\test_javaparser1.java"));
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //System.out.println(cu);

@@ -6,7 +6,7 @@
 
     <groupId>de.b-andand-b</groupId>
     <artifactId>DeutschesJava</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>

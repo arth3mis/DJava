@@ -4,3 +4,6 @@
 
 # javaparser output dir
 /output/**
+
+# testing elements
+/testing/**
